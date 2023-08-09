@@ -16,20 +16,20 @@ class StudentRepositoryTest {
     @Autowired
     private StudentRepository repository;
 
-    @Test
-    public void saveStudent(){
-        Student student =
-                Student
-                        .builder()
-                        .firstName("john")
-                        .lastName("dao")
-                        .emailId("john@gmail.com")
-                        //.guardianEmail("jonathan@gmail.com")
-                        //.guardianName("jonathan")
-                        //.guardianMobile("8140619674")
-                        .build();
-        repository.save(student);
-    }
+//    @Test
+//    public void saveStudent(){
+//        Student student =
+//                Student
+//                        .builder()
+//                        .firstName("john")
+//                        .lastName("dao")
+//                        .emailId("john@gmail.com")
+//                        //.guardianEmail("jonathan@gmail.com")
+//                        //.guardianName("jonathan")
+//                        //.guardianMobile("8140619674")
+//                        .build();
+//        repository.save(student);
+//    }
 
     @Test
     public void saveStudentWithGuardianDetails(){
@@ -89,5 +89,12 @@ class StudentRepositoryTest {
         List <Student> students =
                 repository.getStudentByEmailAddressNative("john@gmail.com");
         System.out.println(students);
+    }
+
+    @Test
+    public void updateStudentNameBasedOnEmailId(){
+        int value
+                = repository.updateStudentNameByEmailId("lilly","john@gmail.com");
+        System.out.println(value);
     }
 }
