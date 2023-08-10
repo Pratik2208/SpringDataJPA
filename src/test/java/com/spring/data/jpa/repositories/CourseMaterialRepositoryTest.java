@@ -41,4 +41,33 @@ class CourseMaterialRepositoryTest {
                 courseMaterialRepository.findAll();
         System.out.println(materials);
     }
+
+    @Test
+    public void saveCourseMaterialWithoutCourse(){
+        CourseMaterial courseMaterial =
+                CourseMaterial
+                        .builder()
+                        .url("www.google.com")
+                        .build();
+        courseMaterialRepository.save(courseMaterial);
+    }
+
+    @Test
+    public void saveCourseMaterialWithCourse(){
+
+        Course course =
+                Course
+                        .builder()
+                        .title("DSA")
+                        .credit("9")
+                        .build();
+
+        CourseMaterial courseMaterial =
+                CourseMaterial
+                        .builder()
+                        .url("www.google.com")
+                        .course(course)
+                        .build();
+        courseMaterialRepository.save(courseMaterial);
+    }
 }

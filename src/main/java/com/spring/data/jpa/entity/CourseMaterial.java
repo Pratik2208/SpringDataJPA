@@ -28,7 +28,10 @@ public class CourseMaterial {
     @OneToOne(
             cascade = CascadeType.ALL,
             // If at the time of fetching data of course material , course should also be fetched then it should be eager otherwise it should be lazy
-            fetch = FetchType.EAGER
+            fetch = FetchType.EAGER,
+            // whenever we are saving a course material compulsory there should be a course is there with course material
+            optional = false
+
     )
     @JoinColumn(
             name = "course_id",
